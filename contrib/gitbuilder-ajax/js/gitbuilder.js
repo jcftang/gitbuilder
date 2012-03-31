@@ -13,19 +13,19 @@ $(document).ready(function(){
 	
 	
 function summarizeUrls(link, i){
-//	if (typeof serverUrl !== 'undefined') {
-//		$.getJSON(serverUrl + "?url=" + link + "&callback=?", function(d){
-//			var d = d.html;
-//			summaryRow(link, d);
-//			checkStatus();
-//		});
-//	} else {
+	if (typeof serverUrl !== 'undefined') {
+		$.getJSON(serverUrl + "?url=" + link + "&callback=?", function(d){
+			var d = d.html;
+			fillCell(link, d, i);
+			checkStatus();
+		});
+	} else {
 		$.get(link,function(d){
 			//summaryRow(link, d);
 			fillCell(link, d, i);
 			checkStatus();
 		});
-//	}
+	}
 }
 
 
@@ -46,16 +46,16 @@ function fillCell(link, d, i) {
 function checkStatus(){
 	$("span").each(function(index) {
 		if($(this).hasClass("status-err")){
-			$(this).parent().addClass("btn btn-danger btn-mini")
+			$(this).parent().addClass("label label-important")
 		}
 		if($(this).hasClass("status-ok")){
-			$(this).parent().addClass("btn btn-success btn-mini")
+			$(this).parent().addClass("label label-success")
 		}
 		if($(this).hasClass("status-warn")){
-			$(this).parent().addClass("btn btn-warning btn-mini")
+			$(this).parent().addClass("label label-warning")
 		}
 			if($(this).hasClass("status-pending")){
-			$(this).parent().addClass("btn btn-mini")
+			$(this).parent().addClass("label")
 		}
 	});
 }

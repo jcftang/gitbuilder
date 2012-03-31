@@ -4,34 +4,42 @@ $.ajaxSetup({
 
 
 $(document).ready(function(){
-	var length = urls.length
-	for(var i =0; i<length; i++){
+	urls.sort();
+	for(var i in urls){
+		setupRow(urls[i], i);
 		summarizeUrls(urls[i], i);
-	}			
+	}
 });
 	
 	
 function summarizeUrls(link, i){
-	if (typeof serverUrl !== 'undefined') {
-		$.getJSON(serverUrl + "?url=" + link + "&callback=?", function(d){
-			var d = d.html;
-			summaryRow(link, d);
-			checkStatus();
-		});
-	} else {
+//	if (typeof serverUrl !== 'undefined') {
+//		$.getJSON(serverUrl + "?url=" + link + "&callback=?", function(d){
+//			var d = d.html;
+//			summaryRow(link, d);
+//			checkStatus();
+//		});
+//	} else {
 		$.get(link,function(d){
-			summaryRow(link, d);
+			//summaryRow(link, d);
+			fillCell(link, d, i);
 			checkStatus();
 		});
-	}
+//	}
 }
 
 
-function summaryRow(link, d) {
-	var mostrecent = $(d).filter("#most_recent").html().replace("Most Recent:","").replace(/<a href="#/g,'<a href="' + link + '#');
+function setupRow(link, i) {
 	var url = "<a class='normalLink' href='" + link + "'>" + link + "</a>";
-	var row = "<tr><td>" + url + "</td><td><div class='most_recent'>" + mostrecent + "</div></td></tr>";
+	var row = "<tr><td>" + url + "</td><td><div class='most_recent'><div id='num" + i + "'>...loading...</div></div></td></tr>";
 	$("#links tbody").append(row);
+}
+
+
+function fillCell(link, d, i) {
+	var mostrecent = $(d).filter("#most_recent").html().replace("Most Recent:","").replace(/<a href="#/g,'<a href="' + link + '#');
+	var numX = "#num" + i;
+	$(numX).html(mostrecent);
 }
 
 

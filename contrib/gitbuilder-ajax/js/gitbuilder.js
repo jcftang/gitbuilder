@@ -35,7 +35,6 @@ function setupRow(link, i) {
 		+ "</td><td align='left' class='most_recent' nowrap='nowrap'><div id='num"
 		+ i
 		+ "'>...loading...</div></td></tr>";
-	$("#links tbody").append(row);
 }
 
 

@@ -32,9 +32,9 @@ function setupRow(link, i) {
 	var url = "<a class='normalLink' href='" + link + "'>" + link + "</a>";
 	var row = "<tr><td align='left' id='most_recent' nowrap='nowrap'>"
 		+ url
-		+ "</td><td><div align='left' class='most_recent' nowrap='nowrap'><div id='num"
+		+ "</td><td align='left' class='most_recent' nowrap='nowrap'><div id='num"
 		+ i
-		+ "'>...loading...</div></div></td></tr>";
+		+ "'>...loading...</div></td></tr>";
 	$("#links tbody").append(row);
 }
 

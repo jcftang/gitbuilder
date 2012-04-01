@@ -21,7 +21,6 @@ function summarizeUrls(link, i){
 		});
 	} else {
 		$.get(link,function(d){
-			//summaryRow(link, d);
 			fillCell(link, d, i);
 			checkStatus();
 		});
@@ -31,7 +30,11 @@ function summarizeUrls(link, i){
 
 function setupRow(link, i) {
 	var url = "<a class='normalLink' href='" + link + "'>" + link + "</a>";
-	var row = "<tr><td>" + url + "</td><td><div class='most_recent'><div id='num" + i + "'>...loading...</div></div></td></tr>";
+	var row = "<tr><td align='left' id='most_recent' nowrap='nowrap'>"
+		+ url
+		+ "</td><td><div align='left' class='most_recent' nowrap='nowrap'><div id='num"
+		+ i
+		+ "'>...loading...</div></div></td></tr>";
 	$("#links tbody").append(row);
 }
 

@@ -1,8 +1,3 @@
-$.ajaxSetup({
-	async: true,
-});
-
-
 $(document).ready(function(){
 	urls.sort();
 	for(var i in urls){
@@ -12,13 +7,15 @@ $(document).ready(function(){
 	setInterval('build()', 600000);
 });
 
+
 function build() {
 	urls.sort();
 	for(var i in urls){
 		summarizeUrls(urls[i], i);
 	}
 }
-	
+
+
 function summarizeUrls(link, i){
 	if (typeof serverUrl !== 'undefined') {
 		$.getJSON(serverUrl + "?url=" + link + "&callback=?", function(d){

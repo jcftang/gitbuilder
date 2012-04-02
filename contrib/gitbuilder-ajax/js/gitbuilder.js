@@ -9,8 +9,15 @@ $(document).ready(function(){
 		setupRow(urls[i], i);
 		summarizeUrls(urls[i], i);
 	}
+	setInterval('build()', 600000);
 });
-	
+
+function build() {
+	urls.sort();
+	for(var i in urls){
+		summarizeUrls(urls[i], i);
+	}
+}
 	
 function summarizeUrls(link, i){
 	if (typeof serverUrl !== 'undefined') {

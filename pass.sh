@@ -41,4 +41,4 @@ echo "sync sha1 and refs"
 rsync -av -e "ssh -i ../rsync-key -o StrictHostKeyChecking=no" \
     $out/tmp/ $target
 rm -rf $out/tmp
-
+#cd $HOME/gitbuilders/gitbuilder-git-annex-x00-x86_64-apple-darwin10.8.0-binary/gitbuilder && ./rsync-to sgenomics.org:public_html/gitbuilder-git-annex-x00-x86_64-apple-darwin10.8.0-binary/ >/dev/null 2>&1

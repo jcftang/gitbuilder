@@ -39,8 +39,12 @@ export PATH=/opt/local/libexec/gnubin:$PATH
 #tar -cvjf git-annex-master-$(uname)-$(uname -m).tar.bz2 git-annex-master-$(uname)-$(uname -m) || exit 4
 #mv git-annex-master-$(uname)-$(uname -m).tar.bz2 ../out/dist/ || exit 4
 
+UPGRADE_LOCATION=http://downloads.kitenet.net/git-annex/OSX/current/10.7.5_Lion/git-annex.dmg
+export UPGRADE_LOCATION
+
 make osxapp || exit 4
-cp -a tmp/git-annex.dmg.bz2 $OUTDIR_TMP
+cp -a tmp/git-annex.dmg $OUTDIR_TMP
+rm -f $OUTDIR_TMP/git-annex.dmg.bz2 # old file
 
 # put our temp files inside .git/ so ls-files doesn't see themgit ls-files --modified >.git/modified-files
 if [ -s .git/modified-files ]; then
